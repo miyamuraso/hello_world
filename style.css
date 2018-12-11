@@ -1,1 +1,7 @@
-a:hover {color:blue;}
+#text-button {
+    display: block;
+    cursor: pointer;
+    width: 300px;
+    text-align: center;
+    border: 1px solid #232323;
+  }
