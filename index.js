@@ -1,3 +1,4 @@
-document.getElementById("text-button").onclick = () => {
-    document.getElementById("text").innerHTML = "Hello World!!";
+document.getElementById("text-button").onclick = function() {
+    document.getElementById("text").innerHTML = "クリックされた！";
   };
+  
