@@ -8,6 +8,10 @@
 
 // document.getElementById("form-button").onclick = function() {
 //     document.getElementById("form-text").innerHTML = "こんにちは " + document.getElementById("name").value + " さん！";
-//   };
 
-console.log("hello")
+<body>
+    <div id="sample">
+        {{ name }}
+    </div>
+</body>
+ 
