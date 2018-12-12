@@ -1,6 +1,84 @@
-new Vue ({
-    el: "#sample",
-    data: {
-        name: "みやそう"
-    }
-})
+<html>
+    <head>
+        <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+        <script src="./index.js" defer></script>
+        <script src="./style.css" defer></script>
+    </head>
+    <body>
+        <div id="app">
+            <p>{{message}}</p>
+        </div>
+        <div id="app-2">
+            <span v-bind:title="message">
+              Hover your mouse over me for a few seconds
+              to see my dynamically bound title!
+            </span>
+        </div>
+        <div id="app-3">
+            <span v-if="seen">Now you see me</span>
+        </div>
+        <div id="app-4">
+            <ol>
+              <li v-for="todo in todos">
+                {{ todo.text }}
+              </li>
+            </ol>
+        </div>
+        <div id="app-5">
+            <p>{{ message }}</p>
+            <button v-on:click="reverseMessage">Reverse Message</button>
+        </div>
+        <div id="app-6">
+            <p>{{ message }}</p>
+            <input v-model="message">
+        </div>
+        <div id="app-7">
+            <ol>
+              <!-- 
+                各 todo-item の内容を表す todo オブジェクトを与えます。
+                これにより内容は動的に変化します。
+                また後述する "key" を各コンポーネントに提供する必要があります。
+              -->
+              <todo-item
+                v-for="item in groceryList"
+                :todo="item"
+                :key="item.id"
+              ></todo-item>
+            </ol>
+        </div>
+        
+        <div id="app8">
+            <button v-on:click="changeMsg">change message</button>
+            <p>{{ message }}</p>
+        </div> 
+        
+        <div id="app-9">
+            <p>Length: {{ length }}</p>
+            <ul>
+                <li v-for="(item, i) in list" :key="item">{{ item }}
+                    <button @click="list.splice(i, 1)">remove</button>
+                </li>
+            </ul>
+            <button @click="addItem">add</button>
+        </div>
+
+        <div id="app-10">
+                <ul class="tab">
+                    <li v-for="item in list" 
+                      @click="changeTab(item.id)" 
+                      @keyup.enter="changeTab(item.id)" 
+                      :class="{active:active(item.id)}" tabindex="0">{{ item.label }}
+                    </li>
+                </ul>
+                <div class="content-vue">
+                  <transition>
+                    <section v-for="item in list" :key="item.id" v-if="active(item.id)">
+                      <p>{{ item.content }}</p>
+                    </section>
+                  </transition>
+                </div>
+            </div>
+              
+
+    </body>
+</html>
